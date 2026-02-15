@@ -75,46 +75,56 @@ def health_check():
 def list_products():
     """List available products and pricing"""
     products = {
-        'basic': {
-            'name': 'Basic License (1 user)',
-            'price': 29.00,
-            'currency': 'usd',
-            'features': [
-                'Up to 1,000 API calls/month',
-                'Email support',
-                'Basic analytics'
-            ]
-        },
-        'pro': {
-            'name': 'Pro License (5 users)',
+        'individual_monthly': {
+            'name': 'Individual Monthly',
             'price': 99.00,
             'currency': 'usd',
+            'billing': 'monthly',
             'features': [
-                'Up to 10,000 API calls/month',
-                'Priority email support',
-                'Advanced analytics',
-                'Multiple user seats'
+                '1 developer license',
+                'Commercial use',
+                'Email support',
+                'All API features'
             ]
         },
-        'enterprise': {
-            'name': 'Enterprise License (unlimited)',
-            'price': 299.00,
+        'individual_yearly': {
+            'name': 'Individual Yearly',
+            'price': 990.00,
             'currency': 'usd',
+            'billing': 'yearly',
             'features': [
-                'Unlimited API calls',
-                '24/7 phone support',
-                'Custom integration',
-                'Dedicated account manager'
+                '1 developer license',
+                'Commercial use',
+                'Email support',
+                'All API features',
+                'Save 10%'
             ]
         },
-        'trial': {
-            'name': 'Free Trial (7 days)',
-            'price': 0.00,
+        'team_monthly': {
+            'name': 'Team Monthly',
+            'price': 499.00,
             'currency': 'usd',
+            'billing': 'monthly',
             'features': [
-                'Up to 100 API calls/day',
-                'Full feature access',
-                'No credit card required'
+                'Up to 5 developers',
+                'Commercial use',
+                'Priority support',
+                'All API features',
+                'Team management'
+            ]
+        },
+        'team_yearly': {
+            'name': 'Team Yearly',
+            'price': 4990.00,
+            'currency': 'usd',
+            'billing': 'yearly',
+            'features': [
+                'Up to 5 developers',
+                'Commercial use',
+                'Priority support',
+                'All API features',
+                'Team management',
+                'Save 10%'
             ]
         }
     }
@@ -132,14 +142,14 @@ def create_checkout():
         }), 500
 
     data = request.get_json() or {}
-    product = data.get('product', 'basic')
+    product = data.get('product', 'individual_monthly')
 
-    # Map product to variant ID (would come from Lemonsqueezy)
+    # Map product to variant ID (update these with your Lemonsqueezy variant IDs)
     variants = {
-        'basic': '123456',
-        'pro': '123457',
-        'enterprise': '123458',
-        'trial': '123459'
+        'individual_monthly': 'REPLACE_WITH_VARIANT_ID',
+        'individual_yearly': 'REPLACE_WITH_VARIANT_ID',
+        'team_monthly': 'REPLACE_WITH_VARIANT_ID',
+        'team_yearly': 'REPLACE_WITH_VARIANT_ID'
     }
 
     variant_id = variants.get(product)
