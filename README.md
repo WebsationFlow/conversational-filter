@@ -54,9 +54,9 @@ curl -X POST https://conversational-filter-production.up.railway.app/api/v1/filt
 | Plan | Price | Details |
 |------|-------|---------|
 | Individual Monthly | $99/mo | 1 developer, commercial use |
-| Individual Yearly | $990/yr | Save 10% |
+| Individual Yearly | $990/yr | 2 months free |
 | Team Monthly | $499/mo | Up to 5 developers |
-| Team Yearly | $4,990/yr | Save 10% |
+| Team Yearly | $4,990/yr | 2 months free |
 
 **[View Pricing & Purchase](https://websationflow.github.io/conversational-filter/)**
 
