@@ -1,15 +1,5 @@
 {
-  "build": {
-    "builder": "heroku.buildpacks"
-  },
   "deploy": {
     "startCommand": "gunicorn --bind 0.0.0.0:$PORT --workers 4 api_service:app"
-  },
-  "environments": {
-    "production": {
-      "variables": {
-        "DEBUG": "false"
-      }
-    }
   }
 }
