@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConversationalFilter - Pricing</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 16px;
+    }
+
+    h1 span { color: #818cf8; }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .toggle-label {
+      font-size: 1rem;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .toggle-label.active { color: #f8fafc; font-weight: 600; }
+
+    .toggle {
+      position: relative;
+      width: 56px;
+      height: 28px;
+      background: #334155;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle.yearly { background: #818cf8; }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+
+    .toggle.yearly::after { transform: translateX(28px); }
+
+    .save-badge {
+      background: #059669;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 40px 32px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: #818cf8;
+      transform: translateY(-4px);
+    }
+
+    .card.popular {
+      border-color: #818cf8;
+      box-shadow: 0 0 40px rgba(129, 140, 248, 0.15);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #818cf8;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 16px;
+      border-radius: 12px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 4px;
+    }
+
+    .price-period {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 32px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .features li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .features li::before {
+      content: '\2713';
+      color: #818cf8;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: #818cf8;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: #6366f1; }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #818cf8;
+      color: #818cf8;
+    }
+
+    .btn-outline:hover {
+      background: #818cf8;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding: 40px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    footer p {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: #818cf8;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .api-section {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: #1e293b;
+      border-radius: 16px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .api-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #f8fafc;
+    }
+
+    .api-section p {
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+
+    code {
+      background: #0f172a;
+      color: #818cf8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.8rem; }
+      .price { font-size: 2.2rem; }
+      .card { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Conversational<span>Filter</span></h1>
+      <p class="subtitle">Smart response filtering for LLMs. Stop over-explanation, prevent scope creep, and get concise answers.</p>
+    </header>
+
+    <div class="toggle-container">
+      <span class="toggle-label active" id="monthly-label">Monthly</span>
+      <div class="toggle" id="billing-toggle" onclick="toggleBilling()"></div>
+      <span class="toggle-label" id="yearly-label">Yearly</span>
+      <span class="save-badge">Save 10%</span>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Individual Plan -->
+      <div class="card popular">
+        <div class="popular-badge">Most Popular</div>
+        <h3 class="card-title">Individual</h3>
+        <p class="card-desc">For solo developers</p>
+        <div class="price" id="individual-price">$99</div>
+        <div class="price-period" id="individual-period">per month</div>
+        <ul class="features">
+          <li>1 developer license</li>
+          <li>Commercial use</li>
+          <li>All API features</li>
+          <li>Email support</li>
+          <li>License key via email</li>
+        </ul>
+        <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/7a9fd8fa-ecbd-4cff-b897-97bbb67f751e" class="btn" id="individual-btn">Get Started</a>
+      </div>
+
+      <!-- Team Plan -->
+      <div class="card">
+        <h3 class="card-title">Team</h3>
+        <p class="card-desc">For growing teams</p>
+        <div class="price" id="team-price">$499</div>
+        <div class="price-period" id="team-period">per month</div>
+        <ul class="features">
+          <li>Up to 5 developers</li>
+          <li>Commercial use</li>
+          <li>All API features</li>
+          <li>Priority support</li>
+          <li>Team management</li>
+        </ul>
+        <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/975cca2c-2e2e-4e61-ad3e-286bb4dc55cd" class="btn btn-outline" id="team-btn">Get Started</a>
+      </div>
+    </div>
+
+    <div class="api-section">
+      <h3>Quick Start</h3>
+      <p>Install and start filtering in under a minute:</p>
+      <p><code>pip install conversational-filter</code></p>
+      <p style="margin-top: 16px;">
+        <a href="https://conversational-filter-production.up.railway.app/api/v1/health" target="_blank" style="color: #818cf8;">API Status</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank" style="color: #818cf8;">GitHub</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>ConversationalFilter &copy; 2026. All rights reserved.</p>
+    <p><a href="mailto:support@conversational-filter.io">support@conversational-filter.io</a></p>
+  </footer>
+
+  <script>
+    const links = {
+      individual_monthly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/7a9fd8fa-ecbd-4cff-b897-97bbb67f751e',
+      individual_yearly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/052d2291-7d51-4b53-86a0-7e7e7320333d',
+      team_monthly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/975cca2c-2e2e-4e61-ad3e-286bb4dc55cd',
+      team_yearly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/6c88b5fb-d43b-4d5f-86cf-3bed86a25f63'
+    };
+
+    let isYearly = false;
+
+    function toggleBilling() {
+      isYearly = !isYearly;
+      const toggle = document.getElementById('billing-toggle');
+      const mLabel = document.getElementById('monthly-label');
+      const yLabel = document.getElementById('yearly-label');
+
+      toggle.classList.toggle('yearly', isYearly);
+      mLabel.classList.toggle('active', !isYearly);
+      yLabel.classList.toggle('active', isYearly);
+
+      document.getElementById('individual-price').textContent = isYearly ? '$990' : '$99';
+      document.getElementById('individual-period').textContent = isYearly ? 'per year' : 'per month';
+      document.getElementById('individual-btn').href = isYearly ? links.individual_yearly : links.individual_monthly;
+
+      document.getElementById('team-price').textContent = isYearly ? '$4,990' : '$499';
+      document.getElementById('team-period').textContent = isYearly ? 'per year' : 'per month';
+      document.getElementById('team-btn').href = isYearly ? links.team_yearly : links.team_monthly;
+    }
+  </script>
+</body>
+</html>

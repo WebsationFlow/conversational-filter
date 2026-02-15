@@ -144,12 +144,12 @@ def create_checkout():
     data = request.get_json() or {}
     product = data.get('product', 'individual_monthly')
 
-    # Map product to variant ID (update these with your Lemonsqueezy variant IDs)
+    # Map product to Lemonsqueezy checkout variant ID
     variants = {
-        'individual_monthly': 'REPLACE_WITH_VARIANT_ID',
-        'individual_yearly': 'REPLACE_WITH_VARIANT_ID',
-        'team_monthly': 'REPLACE_WITH_VARIANT_ID',
-        'team_yearly': 'REPLACE_WITH_VARIANT_ID'
+        'individual_monthly': '7a9fd8fa-ecbd-4cff-b897-97bbb67f751e',
+        'individual_yearly': '052d2291-7d51-4b53-86a0-7e7e7320333d',
+        'team_monthly': '975cca2c-2e2e-4e61-ad3e-286bb4dc55cd',
+        'team_yearly': '6c88b5fb-d43b-4d5f-86cf-3bed86a25f63'
     }
 
     variant_id = variants.get(product)
