@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ConversationalFilter - Pricing</title>
+  <title>ConversationalFilter - Smart Response Filtering for LLMs</title>
+  <meta name="description" content="ConversationalFilter detects scope creep in LLM responses and enforces conversational discipline. Python library and REST API for developers building AI-powered applications.">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,29 +18,392 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 0 20px;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 60px;
+    /* Navigation */
+    nav {
+      padding: 20px 0;
+      border-bottom: 1px solid #1e293b;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 1.4rem;
       font-weight: 700;
+      color: #f8fafc;
+      text-decoration: none;
+    }
+
+    .nav-brand span { color: #818cf8; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #f8fafc; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #f8fafc;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .hero h1 span { color: #818cf8; }
+
+    .hero .subtitle {
+      font-size: 1.3rem;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-buttons .btn {
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: #818cf8;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-primary:hover { background: #6366f1; }
+
+    .btn-secondary {
+      background: transparent;
+      color: #818cf8;
+      border: 2px solid #334155;
+    }
+
+    .btn-secondary:hover { border-color: #818cf8; }
+
+    .hero-note {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+
+    .hero-note a { color: #818cf8; text-decoration: none; }
+    .hero-note a:hover { text-decoration: underline; }
+
+    /* Problem / Solution */
+    .problem-section {
+      padding: 80px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .problem-section h2 {
+      text-align: center;
+      font-size: 2rem;
       color: #f8fafc;
       margin-bottom: 16px;
     }
 
-    h1 span { color: #818cf8; }
-
-    .subtitle {
-      font-size: 1.2rem;
+    .problem-section .section-subtitle {
+      text-align: center;
       color: #94a3b8;
       max-width: 600px;
-      margin: 0 auto 24px;
+      margin: 0 auto 60px;
+      font-size: 1.1rem;
       line-height: 1.6;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .comparison-card {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #334155;
+    }
+
+    .comparison-card.bad { border-color: #ef4444; }
+    .comparison-card.good { border-color: #22c55e; }
+
+    .comparison-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comparison-card.bad h3 { color: #f87171; }
+    .comparison-card.good h3 { color: #4ade80; }
+
+    .comparison-card pre {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #94a3b8;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .comparison-card pre strong { color: #f8fafc; }
+
+    /* How it Works */
+    .how-section {
+      padding: 80px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .how-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #f8fafc;
+      margin-bottom: 60px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: #1e293b;
+      border: 2px solid #818cf8;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #818cf8;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 1.1rem;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Features */
+    .features-section {
+      padding: 80px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .features-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #f8fafc;
+      margin-bottom: 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Code Example */
+    .code-section {
+      padding: 80px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .code-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #f8fafc;
+      margin-bottom: 16px;
+    }
+
+    .code-section .section-subtitle {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+    }
+
+    .code-block {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .code-header {
+      background: #0f172a;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #334155;
+    }
+
+    .code-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .code-dot.red { background: #ef4444; }
+    .code-dot.yellow { background: #eab308; }
+    .code-dot.green { background: #22c55e; }
+
+    .code-block pre {
+      padding: 24px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .code-block .kw { color: #c084fc; }
+    .code-block .fn { color: #60a5fa; }
+    .code-block .str { color: #4ade80; }
+    .code-block .cm { color: #64748b; }
+    .code-block .var { color: #f8fafc; }
+
+    /* Use Cases */
+    .usecases-section {
+      padding: 80px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .usecases-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #f8fafc;
+      margin-bottom: 60px;
+    }
+
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .usecase {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+
+    .usecase h3 {
+      font-size: 1rem;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+
+    .usecase p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Pricing */
+    .pricing-section {
+      padding: 80px 20px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .pricing-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #f8fafc;
+      margin-bottom: 16px;
+    }
+
+    .pricing-subtitle {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
     }
 
     .toggle-container {
@@ -159,12 +523,12 @@
       margin-bottom: 32px;
     }
 
-    .features {
+    .plan-features {
       list-style: none;
       margin-bottom: 32px;
     }
 
-    .features li {
+    .plan-features li {
       padding: 8px 0;
       font-size: 0.95rem;
       color: #cbd5e1;
@@ -173,7 +537,7 @@
       gap: 10px;
     }
 
-    .features li::before {
+    .plan-features li::before {
       content: '\2713';
       color: #818cf8;
       font-weight: 700;
@@ -209,9 +573,60 @@
       color: #fff;
     }
 
+    /* Open Source */
+    .oss-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .oss-section .oss-box {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #334155;
+    }
+
+    .oss-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #f8fafc;
+    }
+
+    .oss-section p {
+      color: #94a3b8;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .oss-section code {
+      background: #0f172a;
+      color: #818cf8;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .oss-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .oss-links a {
+      color: #818cf8;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .oss-links a:hover { text-decoration: underline; }
+
+    /* Footer */
     footer {
       text-align: center;
-      margin-top: 80px;
+      margin-top: 40px;
       padding: 40px 20px;
       border-top: 1px solid #1e293b;
     }
@@ -229,108 +644,288 @@
 
     footer a:hover { text-decoration: underline; }
 
-    .api-section {
-      text-align: center;
-      margin-top: 60px;
-      padding: 40px;
-      background: #1e293b;
-      border-radius: 16px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .api-section h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #f8fafc;
-    }
-
-    .api-section p {
-      color: #94a3b8;
-      margin-bottom: 16px;
-    }
-
-    code {
-      background: #0f172a;
-      color: #818cf8;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .usecases-grid { grid-template-columns: 1fr; }
       .pricing-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 1.8rem; }
       .price { font-size: 2.2rem; }
       .card { padding: 32px 24px; }
+      .nav-links { gap: 16px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Conversational<span>Filter</span></h1>
-      <p class="subtitle">Smart response filtering for LLMs. Stop over-explanation, prevent scope creep, and get concise answers.</p>
-    </header>
 
-    <div class="toggle-container">
-      <span class="toggle-label active" id="monthly-label">Monthly</span>
-      <div class="toggle" id="billing-toggle" onclick="toggleBilling()"></div>
-      <span class="toggle-label" id="yearly-label">Yearly</span>
-      <span class="save-badge">Save 10%</span>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-brand">Conversational<span>Filter</span></a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">GitHub</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <div class="pricing-grid">
-      <!-- Individual Plan -->
-      <div class="card popular">
-        <div class="popular-badge">Most Popular</div>
-        <h3 class="card-title">Individual</h3>
-        <p class="card-desc">For solo developers</p>
-        <div class="price" id="individual-price">$99</div>
-        <div class="price-period" id="individual-period">per month</div>
-        <ul class="features">
-          <li>1 developer license</li>
-          <li>Commercial use</li>
-          <li>All API features</li>
-          <li>Email support</li>
-          <li>License key via email</li>
-        </ul>
-        <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/7a9fd8fa-ecbd-4cff-b897-97bbb67f751e" class="btn" id="individual-btn">Get Started</a>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Stop LLMs from<br><span>over-explaining everything.</span></h1>
+      <p class="subtitle">
+        ConversationalFilter is a Python library that detects scope creep in AI responses
+        and trims them down to what you actually asked for. Available as a package or REST API.
+      </p>
+      <div class="hero-buttons">
+        <a href="#pricing" class="btn btn-primary">Get Started</a>
+        <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank" class="btn btn-secondary">View on GitHub</a>
       </div>
-
-      <!-- Team Plan -->
-      <div class="card">
-        <h3 class="card-title">Team</h3>
-        <p class="card-desc">For growing teams</p>
-        <div class="price" id="team-price">$499</div>
-        <div class="price-period" id="team-period">per month</div>
-        <ul class="features">
-          <li>Up to 5 developers</li>
-          <li>Commercial use</li>
-          <li>All API features</li>
-          <li>Priority support</li>
-          <li>Team management</li>
-        </ul>
-        <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/975cca2c-2e2e-4e61-ad3e-286bb4dc55cd" class="btn btn-outline" id="team-btn">Get Started</a>
-      </div>
-    </div>
-
-    <div class="api-section">
-      <h3>Quick Start</h3>
-      <p>Install and start filtering in under a minute:</p>
-      <p><code>pip install conversational-filter</code></p>
-      <p style="margin-top: 16px;">
-        <a href="https://conversational-filter-production.up.railway.app/api/v1/health" target="_blank" style="color: #818cf8;">API Status</a>
-        &nbsp;&middot;&nbsp;
-        <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank" style="color: #818cf8;">GitHub</a>
+      <p class="hero-note">
+        Open source under MIT &middot; Commercial license for production use &middot;
+        <a href="https://conversational-filter-production.up.railway.app/api/v1/health" target="_blank">API Status</a>
       </p>
     </div>
-  </div>
+  </section>
+
+  <!-- Problem / Solution -->
+  <section class="problem-section">
+    <div class="container">
+      <h2>The Problem</h2>
+      <p class="section-subtitle">
+        You ask a simple question. The LLM writes an essay. ConversationalFilter fixes that.
+      </p>
+      <div class="comparison">
+        <div class="comparison-card bad">
+          <h3>Without ConversationalFilter</h3>
+          <pre><strong>You:</strong> How do I connect to a database?
+
+<strong>LLM:</strong> Great question! Databases are fundamental
+to modern software. Let me explain 8 different
+database types, 12 ORMs, connection pooling
+theory, sharding strategies, the history of
+SQL, NoSQL vs SQL debates, and here are 47
+links you didn't ask for...
+
+<strong>(800+ words for a 7-word question)</strong></pre>
+        </div>
+        <div class="comparison-card good">
+          <h3>With ConversationalFilter</h3>
+          <pre><strong>You:</strong> How do I connect to a database?
+
+<strong>LLM:</strong> For Python with SQLite:
+
+  import sqlite3
+  conn = sqlite3.connect('database.db')
+
+<strong>Want me to dive deeper?</strong>
+
+<strong>(Scope creep detected, trimmed to core answer)</strong></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Analyze Scope</h3>
+          <p>ScopeAnalyzer calculates the complexity ratio between your question and the AI's response using word count, sentence structure, and technical density.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Detect Creep</h3>
+          <p>If the response is disproportionately complex compared to the question, the system flags it as scope creep based on your configured threshold.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Filter &amp; Ask</h3>
+          <p>The response is trimmed to its core answer, and a clarifying question is added so the user can request more detail if they want it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F50D;</div>
+          <h3>Scope Creep Detection</h3>
+          <p>Measures elaboration ratio between question complexity and response complexity. Configurable thresholds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x2702;</div>
+          <h3>Smart Truncation</h3>
+          <p>Cuts responses at natural sentence boundaries. No mid-sentence breaks. Preserves the core answer.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F464;</div>
+          <h3>User Profiles</h3>
+          <p>Predefined profiles like CONCISE_LEARNER or TUTORIAL_LEARNER. Create custom profiles matching your style.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F310;</div>
+          <h3>REST API</h3>
+          <p>Production-ready API hosted on Railway. Send a question and response, get back the filtered version.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F4E6;</div>
+          <h3>Python Package</h3>
+          <p>Install with pip and integrate directly into your application. Works with any LLM provider.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">&#x1F511;</div>
+          <h3>License Management</h3>
+          <p>Built-in license validation via Lemonsqueezy. Automatic key generation on purchase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Example -->
+  <section class="code-section">
+    <div class="container">
+      <h2>Simple Integration</h2>
+      <p class="section-subtitle">Three lines to start filtering</p>
+      <div class="code-block">
+        <div class="code-header">
+          <div class="code-dot red"></div>
+          <div class="code-dot yellow"></div>
+          <div class="code-dot green"></div>
+        </div>
+        <pre><span class="kw">from</span> <span class="var">conversational_filter</span> <span class="kw">import</span> <span class="var">ConversationalFilter</span>
+<span class="kw">from</span> <span class="var">conversational_filter.user_profile</span> <span class="kw">import</span> <span class="var">CONCISE_LEARNER</span>
+
+<span class="cm"># Create a filter with your preferred style</span>
+<span class="var">cf</span> = <span class="fn">ConversationalFilter</span>(user_profile=<span class="var">CONCISE_LEARNER</span>)
+
+<span class="cm"># Filter any LLM response</span>
+<span class="var">result</span> = <span class="var">cf</span>.<span class="fn">filter_response</span>(
+    question=<span class="str">"How do I authenticate users?"</span>,
+    response=<span class="var">verbose_llm_output</span>
+)
+
+<span class="fn">print</span>(<span class="var">result</span>.filtered_response)
+<span class="cm"># Concise, focused answer - no scope creep</span>
+
+<span class="fn">print</span>(<span class="var">result</span>.clarifying_question)
+<span class="cm"># "Want me to dive deeper?"</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="usecases-section">
+    <div class="container">
+      <h2>Built For</h2>
+      <div class="usecases-grid">
+        <div class="usecase">
+          <h3>AI Chatbot Developers</h3>
+          <p>Keep your chatbot responses focused and on-topic. Prevent users from getting overwhelmed with information they didn't request.</p>
+        </div>
+        <div class="usecase">
+          <h3>Developer Tools</h3>
+          <p>Integrate into IDE plugins, CLI tools, or coding assistants to keep AI code suggestions concise and relevant.</p>
+        </div>
+        <div class="usecase">
+          <h3>Education Platforms</h3>
+          <p>Match response depth to the learner's level. Beginners get simple answers; advanced users get technical detail on demand.</p>
+        </div>
+        <div class="usecase">
+          <h3>Enterprise Applications</h3>
+          <p>Enforce response quality standards across your organization's AI-powered tools with consistent filtering policies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <p class="pricing-subtitle">Open source for personal use. Commercial license for production.</p>
+
+      <div class="toggle-container">
+        <span class="toggle-label active" id="monthly-label">Monthly</span>
+        <div class="toggle" id="billing-toggle" onclick="toggleBilling()"></div>
+        <span class="toggle-label" id="yearly-label">Yearly</span>
+        <span class="save-badge">Save 10%</span>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Individual Plan -->
+        <div class="card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3 class="card-title">Individual</h3>
+          <p class="card-desc">For solo developers</p>
+          <div class="price" id="individual-price">$99</div>
+          <div class="price-period" id="individual-period">per month</div>
+          <ul class="plan-features">
+            <li>1 developer license</li>
+            <li>Commercial use</li>
+            <li>All API features</li>
+            <li>Email support</li>
+            <li>License key via email</li>
+          </ul>
+          <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/7a9fd8fa-ecbd-4cff-b897-97bbb67f751e" class="btn" id="individual-btn">Get Started</a>
+        </div>
+
+        <!-- Team Plan -->
+        <div class="card">
+          <h3 class="card-title">Team</h3>
+          <p class="card-desc">For growing teams</p>
+          <div class="price" id="team-price">$499</div>
+          <div class="price-period" id="team-period">per month</div>
+          <ul class="plan-features">
+            <li>Up to 5 developers</li>
+            <li>Commercial use</li>
+            <li>All API features</li>
+            <li>Priority support</li>
+            <li>Team management</li>
+          </ul>
+          <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/975cca2c-2e2e-4e61-ad3e-286bb4dc55cd" class="btn btn-outline" id="team-btn">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source -->
+  <section class="oss-section">
+    <div class="container">
+      <div class="oss-box">
+        <h3>Open Source</h3>
+        <p>
+          ConversationalFilter is dual-licensed. The core library is open source under MIT for personal and non-commercial use.
+          Commercial use requires a license. Install and try it now:
+        </p>
+        <p><code>pip install conversational-filter</code></p>
+        <div class="oss-links">
+          <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">GitHub Repository</a>
+          <a href="https://conversational-filter-production.up.railway.app/api/v1/health" target="_blank">API Status</a>
+          <a href="https://conversational-filter-production.up.railway.app/api/v1/products" target="_blank">API Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>
-    <p>ConversationalFilter &copy; 2026. All rights reserved.</p>
-    <p><a href="mailto:support@conversational-filter.io">support@conversational-filter.io</a></p>
+    <p>ConversationalFilter &copy; 2026 WebsationFlow. All rights reserved.</p>
+    <p>
+      <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">GitHub</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:support@conversational-filter.io">Contact</a>
+    </p>
   </footer>
 
   <script>
@@ -361,6 +956,15 @@
       document.getElementById('team-period').textContent = isYearly ? 'per year' : 'per month';
       document.getElementById('team-btn').href = isYearly ? links.team_yearly : links.team_monthly;
     }
+
+    // Smooth scrolling for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
   </script>
 </body>
 </html>
