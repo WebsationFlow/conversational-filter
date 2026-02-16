@@ -146,10 +146,10 @@ def create_checkout():
 
     # Map product to Lemonsqueezy checkout variant ID
     variants = {
-        'individual_monthly': '7a9fd8fa-ecbd-4cff-b897-97bbb67f751e',
-        'individual_yearly': '052d2291-7d51-4b53-86a0-7e7e7320333d',
-        'team_monthly': '975cca2c-2e2e-4e61-ad3e-286bb4dc55cd',
-        'team_yearly': '6c88b5fb-d43b-4d5f-86cf-3bed86a25f63'
+        'individual_monthly': '834155',
+        'individual_yearly': '1314393',
+        'team_monthly': '834232',
+        'team_yearly': '1314510'
     }
 
     variant_id = variants.get(product)
