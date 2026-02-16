@@ -68,7 +68,7 @@ Lemonsqueezy will create these for you:
   - Commercial use license
   - Email support
 
-- **Yearly**: $990/year (save 10%)
+- **Yearly**: $990/year (2 months free)
   - Same as monthly
   - Annual billing discount
 
@@ -78,7 +78,7 @@ Lemonsqueezy will create these for you:
   - Team support
   - Priority support
 
-- **Yearly**: $4,990/year (save 10%)
+- **Yearly**: $4,990/year (2 months free)
 
 **Enterprise:**
 - Custom pricing

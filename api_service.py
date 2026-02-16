@@ -97,7 +97,7 @@ def list_products():
                 'Commercial use',
                 'Email support',
                 'All API features',
-                'Save 10%'
+                '2 months free'
             ]
         },
         'team_monthly': {
@@ -124,7 +124,7 @@ def list_products():
                 'Priority support',
                 'All API features',
                 'Team management',
-                'Save 10%'
+                '2 months free'
             ]
         }
     }

@@ -205,7 +205,7 @@ Create simple HTML file (pricing.html):
     <div class="card">
       <h3>Individual Yearly</h3>
       <p><strong>$990/year</strong></p>
-      <p>Save 10% | 1 developer</p>
+      <p>2 months free | 1 developer</p>
       <button onclick="check('individual_yearly')">Buy Now</button>
     </div>
 
@@ -219,7 +219,7 @@ Create simple HTML file (pricing.html):
     <div class="card">
       <h3>Team Yearly</h3>
       <p><strong>$4,990/year</strong></p>
-      <p>Save 10% | Up to 5 developers</p>
+      <p>2 months free | Up to 5 developers</p>
       <button onclick="check('team_yearly')">Buy Now</button>
     </div>
   </div>
