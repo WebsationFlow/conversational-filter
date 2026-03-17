@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ConversationalFilter - Smart Response Filtering for LLMs</title>
   <meta name="description" content="Your AI is brilliant - so why are you editing its homework? ConversationalFilter detects scope creep in LLM responses and trims them to what you actually asked for.">
-  <!-- Lemonsqueezy Affiliate Tracking -->
-  <script>
-    window.lemonSqueezyAffiliateConfig = { store: 'conversationalfilter' }
-  </script>
-  <script src="https://lmsqueezy.com/affiliate.js" defer></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -672,7 +667,7 @@
       <ul class="nav-links">
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#pricing">Get Started</a></li>
         <li><a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">GitHub</a></li>
       </ul>
     </div>
@@ -691,8 +686,8 @@
         <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank" class="btn btn-secondary">View on GitHub</a>
       </div>
       <p class="hero-note">
-        Open source under MIT &middot; Commercial license for production use &middot;
-        <a href="https://conversational-filter-production.up.railway.app/api/v1/health" target="_blank">API Status</a>
+        Open source under MIT &middot; Self-hostable &middot;
+        <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">View Source</a>
       </p>
     </div>
   </section>
@@ -783,7 +778,7 @@ links you didn't ask for...
         <div class="feature-card">
           <div class="feature-icon">&#x1F310;</div>
           <h3>REST API</h3>
-          <p>Production-ready API hosted on Railway. Send a question and response, get back the filtered version.</p>
+          <p>Self-hostable API via Docker. Send a question and response, get back the filtered version.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#x1F4E6;</div>
@@ -792,8 +787,8 @@ links you didn't ask for...
         </div>
         <div class="feature-card">
           <div class="feature-icon">&#x1F511;</div>
-          <h3>License Management</h3>
-          <p>Built-in license validation via Lemonsqueezy. Automatic key generation on purchase.</p>
+          <h3>Dual License</h3>
+          <p>MIT for personal use. Commercial license available for production deployments and business integration.</p>
         </div>
       </div>
     </div>
@@ -856,51 +851,44 @@ links you didn't ask for...
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Get Started -->
   <section class="pricing-section" id="pricing">
     <div class="container">
-      <h2>Pricing</h2>
-      <p class="pricing-subtitle">Open source for personal use. Commercial license for production.</p>
+      <h2>Get Started</h2>
+      <p class="pricing-subtitle">Open source under MIT. Install and start filtering today.</p>
 
-      <div class="toggle-container">
-        <span class="toggle-label active" id="monthly-label">Monthly</span>
-        <div class="toggle" id="billing-toggle" onclick="toggleBilling()"></div>
-        <span class="toggle-label" id="yearly-label">Yearly</span>
-        <span class="save-badge">2 Months Free</span>
-      </div>
-
-      <div class="pricing-grid">
-        <!-- Individual Plan -->
+      <div class="pricing-grid" style="grid-template-columns: 1fr 1fr; max-width: 800px;">
+        <!-- Open Source -->
         <div class="card popular">
-          <div class="popular-badge">Most Popular</div>
-          <h3 class="card-title">Individual</h3>
-          <p class="card-desc">For solo developers</p>
-          <div class="price" id="individual-price">$99</div>
-          <div class="price-period" id="individual-period">per month</div>
+          <div class="popular-badge">Free</div>
+          <h3 class="card-title">Open Source</h3>
+          <p class="card-desc">Personal &amp; non-commercial use</p>
+          <div class="price" style="font-size: 2.4rem;">MIT License</div>
+          <div class="price-period">free forever</div>
           <ul class="plan-features">
-            <li>1 developer license</li>
-            <li>Commercial use</li>
-            <li>All API features</li>
-            <li>Email support</li>
-            <li>License key via email</li>
+            <li>Full core library</li>
+            <li>Scope creep detection</li>
+            <li>Smart truncation</li>
+            <li>User profiles</li>
+            <li>Self-hosted deployment</li>
           </ul>
-          <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/1314502" class="btn" id="individual-btn">Get Started</a>
+          <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank" class="btn">View on GitHub</a>
         </div>
 
-        <!-- Team Plan -->
+        <!-- Commercial -->
         <div class="card">
-          <h3 class="card-title">Team</h3>
-          <p class="card-desc">For growing teams</p>
-          <div class="price" id="team-price">$499</div>
-          <div class="price-period" id="team-period">per month</div>
+          <h3 class="card-title">Commercial</h3>
+          <p class="card-desc">For production &amp; business use</p>
+          <div class="price" style="font-size: 2.4rem;">Contact Us</div>
+          <div class="price-period">flexible licensing</div>
           <ul class="plan-features">
-            <li>Up to 5 developers</li>
-            <li>Commercial use</li>
-            <li>All API features</li>
+            <li>Commercial use rights</li>
             <li>Priority support</li>
-            <li>Team management</li>
+            <li>Team licensing</li>
+            <li>Custom integration help</li>
+            <li>SLA available</li>
           </ul>
-          <a href="https://conversationalfilter.lemonsqueezy.com/checkout/buy/1314579" class="btn btn-outline" id="team-btn">Get Started</a>
+          <a href="https://github.com/WebsationFlow/conversational-filter/issues" target="_blank" class="btn btn-outline">Get in Touch</a>
         </div>
       </div>
     </div>
@@ -918,8 +906,7 @@ links you didn't ask for...
         <p><code>pip install conversational-filter</code></p>
         <div class="oss-links">
           <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">GitHub Repository</a>
-          <a href="https://conversational-filter-production.up.railway.app/api/v1/health" target="_blank">API Status</a>
-          <a href="https://conversational-filter-production.up.railway.app/api/v1/products" target="_blank">API Products</a>
+          <a href="https://github.com/WebsationFlow/conversational-filter#readme" target="_blank">Documentation</a>
         </div>
       </div>
     </div>
@@ -930,39 +917,11 @@ links you didn't ask for...
     <p>
       <a href="https://github.com/WebsationFlow/conversational-filter" target="_blank">GitHub</a>
       &nbsp;&middot;&nbsp;
-      <a href="mailto:support@conversational-filter.io">Contact</a>
+      <a href="https://github.com/WebsationFlow/conversational-filter/issues" target="_blank">Contact</a>
     </p>
   </footer>
 
   <script>
-    const links = {
-      individual_monthly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/1314502',
-      individual_yearly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/1314393',
-      team_monthly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/1314579',
-      team_yearly: 'https://conversationalfilter.lemonsqueezy.com/checkout/buy/1314510'
-    };
-
-    let isYearly = false;
-
-    function toggleBilling() {
-      isYearly = !isYearly;
-      const toggle = document.getElementById('billing-toggle');
-      const mLabel = document.getElementById('monthly-label');
-      const yLabel = document.getElementById('yearly-label');
-
-      toggle.classList.toggle('yearly', isYearly);
-      mLabel.classList.toggle('active', !isYearly);
-      yLabel.classList.toggle('active', isYearly);
-
-      document.getElementById('individual-price').textContent = isYearly ? '$990' : '$99';
-      document.getElementById('individual-period').textContent = isYearly ? 'per year' : 'per month';
-      document.getElementById('individual-btn').href = isYearly ? links.individual_yearly : links.individual_monthly;
-
-      document.getElementById('team-price').textContent = isYearly ? '$4,990' : '$499';
-      document.getElementById('team-period').textContent = isYearly ? 'per year' : 'per month';
-      document.getElementById('team-btn').href = isYearly ? links.team_yearly : links.team_monthly;
-    }
-
     // Smooth scrolling for nav links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
